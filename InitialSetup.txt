@@ -1,0 +1,26 @@
+# Add "admin" user to the sudo group
+sudo usermod -aG sudo admin
+
+# Update apt and upgrade packages
+sudo apt update
+sudo apt upgrade 
+
+# Install docker 
+https://docs.docker.com/engine/install/debian/ 
+
+# Installing Kubernetes (if installing in local then need to install minikube)
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+
+# Create a new user
+adduser sayantan-rpi
+usermod -aG sudo sayantan-rpi
+su - sayantan-rpi
+
+# Add User to the Docker Group
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo usermod -aG docker $USER && newgrp docker
+
+# Start the minikube after login ith new user 
+minikube start --driver=docker
